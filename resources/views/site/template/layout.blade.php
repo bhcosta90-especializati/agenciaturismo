@@ -46,7 +46,7 @@
                         </li>
                     </ul>
                 </div><!--collapse-->
-                @if(false)
+                @if(!auth()->check())
                     <div class="main-auth">
                         <a href="{{route('login')}}" class="sign">ENTRAR</a>
                         <a href="{{route('register')}}" class="signup efect-transition">CADASTRE-SE</a>
