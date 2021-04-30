@@ -3,12 +3,13 @@
 namespace App\Forms\Admin;
 
 use App\Models\Plane;
+use App\Services\Admin\BrandService;
 use App\Services\Admin\PlaneService;
 use Kris\LaravelFormBuilder\Form;
 
 class PlaneForm extends Form
 {
-    public function __construct(private PlaneService $planeService)
+    public function __construct(private PlaneService $planeService, private BrandService $brandService)
     {
         
     }
@@ -34,7 +35,7 @@ class PlaneForm extends Form
         ])->add('brand_id', 'select', [
             'label' => __('Marca'),
             'empty_value' => 'Selecione...',
-            'choices' => $this->planeService->pluck(),
+            'choices' => $this->brandService->pluck(),
             'rules' => [
                 'exists:brands,id'
             ]
