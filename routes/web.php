@@ -25,7 +25,7 @@ Route::group(['as' => 'site.'], function(){
     });
 });
 
-Route::group(['as' => 'admin.', 'middleware' => 'auth'], function(){
+Route::group(['as' => 'admin.', 'middleware' => ['auth', 'is_admin']], function(){
     Route::get('/home', [App\Http\Controllers\Admin\IndexController::class, 'index'])->name('home');
     Route::group(['prefix' => 'admin'], function(){
         Route::resource('brand', App\Http\Controllers\Admin\BrandController::class)->except(['show']);
